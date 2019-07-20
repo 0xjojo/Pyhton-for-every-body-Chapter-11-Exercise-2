@@ -5,16 +5,20 @@
 #print out the average.
 #Enter file:mbox.txt
 #38444.0323119
-fhand = open (input("Enter file:"),'r')
+import re
+bate = raw_input ("Enter file:")
+fhand = open(bate)
 tot = 0
 avj = 0
 num_list = []
 for line in fhand :
     line = line.rstrip()
-    y = findall('^New Revision: ([0-9]+)',line)
+    y = re.findall('^New Revision: ([0-9]+)',line)
+
     if len(y) > 0 :
-        num_list = num_list.append(y)
+        float(y[0])
+        num_list.append(y[0])
 for num in num_list :
-    tot = tot + float(num)
+    tot = tot +float(num)
 avj = tot / len(num_list)
 print (avj)
